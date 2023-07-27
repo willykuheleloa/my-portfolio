@@ -32,21 +32,13 @@
 }
 
 .loading-bar {
-  height: 100%;
-  width: 0;
+  height: 20px;
+  width: 700px;
   background-color: #ccc;
+  background: linear-gradient(to right, red, yellow, green);
 }
 
-.percentage {
-  margin-top: 10px;
-}
-
-.question.visible {
-  opacity: 1;
-  transition: opacity 2s ease-in-out;
-}
-
-.question.hidden {
-  opacity: 0;
-  transition: opacity 2s ease-in-out;
+.fade {
+  transition: opacity 0.5s;
+  animation: fadeInFromTop 1s ease-in-out;
 }
