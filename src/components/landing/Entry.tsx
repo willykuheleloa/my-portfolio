@@ -1,20 +1,12 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./LoadingComponent.css";
+import { Container, Row, Col } from "react-bootstrap";
 
 interface EntryProps {}
-
-interface EntryState {
-  loading: boolean;
-  progress: number;
-  displayText: string;
-}
 
 const Entry: React.FC<EntryProps> = () => {
   const [loading, setLoading] = useState(true);
   const [progress, setProgress] = useState(0);
-  const [displayText, setDisplayText] = useState("");
-  const navigate = useNavigate();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -23,47 +15,45 @@ const Entry: React.FC<EntryProps> = () => {
       } else {
         setLoading(false);
       }
-    }, 50);
+    }, 45);
 
     return () => clearInterval(interval);
   }, [progress]);
 
-  useEffect(() => {
-    setLoading(true);
-  }, []);
-
-  useEffect(() => {
-    if (loading) {
-      if (progress <= 50) {
-        setDisplayText("Why did the developer cross the road?");
-      } else {
-        setDisplayText("To git to the other side...");
-      }
-    }
-  }, [progress, loading]);
-
-  useEffect(() => {
-    if (progress === 100) {
-      navigate("/landing");
-    }
-  }, [progress, navigate]);
-
-  return (
-    <div className={`loading-container ${loading ? "fade-in" : "fade-out"}`}>
+  return progress <= 99 ? (
+    <Container className={`loading-container $`}>
       {loading && (
-        <p className={`question ${progress <= 50 ? "visible" : "hidden"}`}>
-          {displayText}
-        </p>
+        <Row className="justify-content-md-center">
+          <Col md="auto">
+            {progress < 55 ? (
+              <h2 className={`display-4 fade-out`}>
+                Why did the developer cross the road?
+              </h2>
+            ) : (
+              <h2 className={`display-4 fade`}>To git to the other side...</h2>
+            )}
+          </Col>
+        </Row>
       )}
-      <div className="loading-bar-container">
-        <div
-          className={`loading-bar ${loading ? "loading" : ""}`}
-          style={{ width: `${progress}%` }}
-        ></div>
-      </div>
-      {loading && <p className="percentage">{progress}%</p>}
-    </div>
-  );
+      <Row className="justify-content-md-center">
+        <Col md="auto">
+          <div className="loading-bar-container">
+            <div
+              className={`loading-bar ${loading ? "loading" : ""}`}
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
+        </Col>
+      </Row>
+      {loading && (
+        <Row className="justify-content-md-center">
+          <Col md="auto">
+            <p className="display-5">{progress}%</p>
+          </Col>
+        </Row>
+      )}
+    </Container>
+  ) : null;
 };
 
 export default Entry;
