@@ -9,6 +9,15 @@
   }
 }
 
+@keyframes imgFade {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
 .loading-container {
   display: flex;
   flex-direction: column;
@@ -41,4 +50,8 @@
 .fade {
   transition: opacity 0.5s;
   animation: fadeInFromTop 1s ease-in-out;
+}
+
+.img-fade {
+  animation: imgFade 2s ease-in-out;
 }
