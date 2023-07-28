@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import "./LoadingComponent.css";
+import "./Landing.css";
 import { Container, Row, Col } from "react-bootstrap";
+import MainPage from "./MainPage";
 
 interface EntryProps {}
 
@@ -53,7 +54,9 @@ const Entry: React.FC<EntryProps> = () => {
         </Row>
       )}
     </Container>
-  ) : null;
+  ) : (
+    <MainPage />
+  );
 };
 
 export default Entry;
