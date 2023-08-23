@@ -22,12 +22,12 @@ const Entry: React.FC<EntryProps> = () => {
   }, [progress]);
 
   return progress <= 99 ? (
-    <Container className={`loading-container $`}>
+    <Container className="loading-container">
       {loading && (
         <Row className="justify-content-md-center">
           <Col md="auto">
             {progress < 55 ? (
-              <h2 className={`display-4 fade-out`}>
+              <h2 className="display-4 fade-out">
                 Why did the developer cross the road?
               </h2>
             ) : (

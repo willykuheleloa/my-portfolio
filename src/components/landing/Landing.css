@@ -19,30 +19,29 @@
 }
 
 .loading-container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
   color: white;
   font-size: 20px;
   font-family: Arial, sans-serif;
   animation: fadeInFromTop 2s ease-in-out;
+  text-align: center;
 }
 
 .loading-bar-container {
-  position: relative;
-  width: 700px;
-  height: 20px;
+  width: 30%;
+  height: 10%;
   border: 1px solid #ccc;
   border-radius: 5px;
-  margin: 20px;
   overflow: hidden;
+  margin: 0 auto;
 }
 
 .loading-bar {
   height: 20px;
-  width: 700px;
+  width: 100%;
   background-color: #ccc;
   background: linear-gradient(to right, blue, purple, green);
 }
@@ -57,13 +56,17 @@
 }
 
 .overlay-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
+  height: 50%;
 }
 
 .overlay-content-text {
   display: flex;
   position: absolute;
-  top: 30%;
+  top: 40%;
   left: 30%;
   transform: translate(-50%, -50%);
   color: white;
@@ -72,21 +75,23 @@
 
 .overlay-content-img {
   position: absolute;
-  top: 60%;
+  top: 50%;
   left: 70%;
   transform: translate(-50%, -50%);
 }
 
-.slider-container img {
-  object-fit: contain;
-  /* width: 100%; */
-  height: 400px;
-}
 .slider-container {
   position: relative;
   overflow: hidden;
   width: 100%;
   height: 400px;
+}
+
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
 }
 
 .slider-image {
@@ -96,7 +101,7 @@
   width: 100%;
   height: 400px;
   object-fit: cover;
-  transition: opacity 1.5s; /* Adjust transition duration as desired */
+  transition: opacity 1.5s;
 }
 
 .slider-fade-in {
@@ -107,4 +112,32 @@
 .slider-fade-out {
   opacity: 0;
   z-index: 1;
+}
+
+/* Styles for the arrow buttons */
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  z-index: 3;
+}
+
+.slider-button.left {
+  left: 5px;
+}
+
+.slider-button.right {
+  right: 5px;
+}
+
+.slider-button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
 }
