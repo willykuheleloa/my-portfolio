@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Card, Button } from "react-bootstrap";
 
-const Projects: React.FC = () => {
+const Projects = () => {
   return (
     <Container className="py-5" id="projects">
       <h2 className="mb-4">Projects</h2>

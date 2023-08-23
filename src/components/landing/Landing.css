@@ -55,3 +55,56 @@
 .img-fade {
   animation: imgFade 2s ease-in-out;
 }
+
+.overlay-container {
+  position: relative;
+}
+
+.overlay-content-text {
+  display: flex;
+  position: absolute;
+  top: 30%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  color: white;
+  width: 40%;
+}
+
+.overlay-content-img {
+  position: absolute;
+  top: 60%;
+  left: 70%;
+  transform: translate(-50%, -50%);
+}
+
+.slider-container img {
+  object-fit: contain;
+  /* width: 100%; */
+  height: 400px;
+}
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 400px;
+}
+
+.slider-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  transition: opacity 1.5s; /* Adjust transition duration as desired */
+}
+
+.slider-fade-in {
+  opacity: 1;
+  z-index: 2;
+}
+
+.slider-fade-out {
+  opacity: 0;
+  z-index: 1;
+}
