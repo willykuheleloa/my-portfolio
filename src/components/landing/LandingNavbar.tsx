@@ -10,9 +10,13 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 
+interface LandingNavbarProps {
+  onAboutClick: () => void;
+}
+
 const pages = ["About", "Projects", "Skills"];
 
-function ResponsiveAppBar() {
+const LandingNavbar: React.FC<LandingNavbarProps> = ({ onAboutClick }) => {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const navigate = useNavigate();
@@ -55,12 +59,10 @@ function ResponsiveAppBar() {
         <Toolbar disableGutters>
           <Box
             sx={{
-              flexGrow: 1,
               display: { xs: "flex", md: "none" },
             }}
           >
             <IconButton
-              size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
@@ -86,12 +88,7 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem
-                  key={page}
-                  onClick={() => {
-                    handleCloseNavMenu();
-                  }}
-                >
+                <MenuItem key={page}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -116,7 +113,6 @@ function ResponsiveAppBar() {
               fontSize: isScrolled ? "26px" : "30px",
               cursor: "pointer",
             }}
-            onClick={() => navigate("/")}
           >
             William Kuheleloa
           </Typography>
@@ -142,6 +138,11 @@ function ResponsiveAppBar() {
                   fontSize: isScrolled ? "16px" : "20px",
                   cursor: "pointer",
                 }}
+                onClick={() => {
+                  if (page === "About") {
+                    onAboutClick();
+                  }
+                }}
               >
                 {page}
               </Button>
@@ -151,6 +152,6 @@ function ResponsiveAppBar() {
       </Container>
     </AppBar>
   );
-}
+};
 
-export default ResponsiveAppBar;
+export default LandingNavbar;

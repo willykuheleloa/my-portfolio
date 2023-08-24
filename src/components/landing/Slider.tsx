@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "./Landing.css";
-import { Spinner, Card } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import Daughter from "../../misc/Daughter.jpeg";
+import USAF from "../../misc/USAF.jpeg";
+import Fishing from "../../misc/Fishing.jpeg";
 
-interface ImageSliderProps {
-  images: string[];
-}
+const images = [Fishing, USAF, Daughter];
 
-const Slider: React.FC<ImageSliderProps> = ({ images }) => {
+const Slider: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const [isFading, setIsFading] = useState<boolean>(false);
 
@@ -27,31 +28,26 @@ const Slider: React.FC<ImageSliderProps> = ({ images }) => {
 
   return (
     <>
-      <Card
-        className="overlay-content-img"
-        style={{ height: "70%", width: "45%" }}
-      >
-        <div className="slider-container">
-          <img
-            className={`slider-image ${
-              isFading ? "slider-fade-out" : "slider-fade-in"
-            }`}
-            src={images[currentImageIndex]}
-            alt={`slide-${currentImageIndex}`}
-          />
-          <button
-            onClick={() => handleImageChange("prev")}
-            className="slider-button left"
-          >
-            ←
-          </button>
-          <button
-            onClick={() => handleImageChange("next")}
-            className="slider-button right"
-          >
-            →
-          </button>
-        </div>
+      <Card className="slider-container" style={{ width: "90%" }}>
+        <img
+          className={`slider-image ${
+            isFading ? "slider-fade-out" : "slider-fade-in"
+          }`}
+          src={images[currentImageIndex]}
+          alt={`slide-${currentImageIndex}`}
+        />
+        <button
+          onClick={() => handleImageChange("prev")}
+          className="slider-button left"
+        >
+          ←
+        </button>
+        <button
+          onClick={() => handleImageChange("next")}
+          className="slider-button right"
+        >
+          →
+        </button>
       </Card>
     </>
   );
